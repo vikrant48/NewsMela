@@ -1,0 +1,96 @@
+import React, { useState,useEffect } from 'react'
+import Card from './Card'
+
+const News = () => {
+
+  const [search, setsearch] = useState("india");
+  const [newsData, setnewsData] = useState(null);
+
+  const API_KEY = 'f36c2bdbc4114e48861a0c424f4a1363';
+  const today = new Date().toISOString().split('T')[0];
+  console.log(today); // Output: 'YYYY-MM-DD'
+
+  const getData = async()=>{
+    try {
+      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=2024-10-12&to=${today}&apiKey=${API_KEY}`)
+      const jsonData = await responce.json();
+      console.log(jsonData);
+      setnewsData(jsonData.articles)
+      // let dt = jsonData.articles.slice(0,10)
+      // setNewsData(dt)
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+
+  }
+
+  useEffect(()=>{
+    getData()
+  },[search])
+
+  const handleinput = (e)=>{
+    setsearch(e.target.value)
+
+  }
+  const userInput = (e)=>{
+    setsearch(e.target.value)
+
+  }
+
+  return (
+    <>
+    <div>
+      <nav>
+        <div>
+          <h1>NEWSMELA</h1>
+        </div>
+        <ul>
+          <a href="https://www.indiatoday.in/india">All News</a>
+          <a href="https://www.ndtv.com/trends">Treandy</a>
+        </ul>
+        <div className="searchbar">
+          <input type="text" placeholder='searchnews' value ={search} onChange={handleinput} />
+          <button onClick={getData}>Search</button>
+        </div>
+      </nav>
+      <div className="catogarybtn">
+        <button onClick={userInput} value='sport'>Sports</button>
+        <button onClick={userInput} value='politics'>Politics</button>
+        <button onClick={userInput} value='entertainment'>Entertainment</button>
+        <button onClick={userInput} value='international'>International</button>
+        <button onClick={userInput} value='fitness'>Fitness</button>
+      </div>
+      <div>
+        {newsData?  <Card data={newsData}/> : null}
+      </div>
+      <footer className='footerStyles'>
+      <div className='footerContainer'>
+        <div className='footerLeft'>
+          <h3>NEWSMELA</h3>
+          <p>Stay updated with the latest news from around the world.</p>
+        </div>
+        <div className='footerCenter'>
+          <ul className='footerLinks'>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div className='footerRight'>
+          <p>&copy; 2024 NewsMela All rights reserved.</p>
+          <p>Follow us on:</p>
+          <div className='socialLinks'>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+          </div>
+        </div>
+      </div>
+      </footer>
+    </div>
+   
+    </>
+  )
+}
+
+export default News
