@@ -1,18 +1,21 @@
 import React, { useState,useEffect } from 'react'
 import Card from './Card'
+import Weather from './Weather';
 
 const News = () => {
 
   const [search, setsearch] = useState("india");
   const [newsData, setnewsData] = useState(null);
+  const [isWeatherOpen, setIsWeatherOpen] = useState(false); // State to control Weather modal
 
-  const API_KEY = 'f36c2bdbc4114e48861a0c424f4a1363';
+  const NEWS_API_KEY = 'f36c2bdbc4114e48861a0c424f4a1363';
+
   const today = new Date().toISOString().split('T')[0];
   console.log(today); // Output: 'YYYY-MM-DD'
 
   const getData = async()=>{
     try {
-      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=2024-10-12&to=${today}&apiKey=${API_KEY}`)
+      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=2024-10-12&to=${today}&apiKey=${NEWS_API_KEY}`)
       const jsonData = await responce.json();
       console.log(jsonData);
       setnewsData(jsonData.articles)
@@ -23,7 +26,6 @@ const News = () => {
     }
 
   }
-
   useEffect(()=>{
     getData()
   },[search])
@@ -36,6 +38,14 @@ const News = () => {
     setsearch(e.target.value)
 
   }
+
+  const openWeatherModal = () => {
+    setIsWeatherOpen(true);  // Open Weather modal
+  };
+
+  const closeWeatherModal = () => {
+    setIsWeatherOpen(false); // Close Weather modal
+  };
 
   return (
     <>
@@ -60,6 +70,18 @@ const News = () => {
         <button onClick={userInput} value='international'>International</button>
         <button onClick={userInput} value='fitness'>Fitness</button>
       </div>
+      <div>
+        <button onClick={openWeatherModal}>Cheak Weather Update</button> {/* Weather Button */}
+      </div>
+      {/* Weather Modal */}
+      {isWeatherOpen && (
+          <div className="weatherModal">
+            <div className="modalContent">
+              <Weather />
+              <button onClick={closeWeatherModal} className="closeModal">Close</button> {/* Close button */}
+            </div>
+          </div>
+        )}
       <div>
         {newsData?  <Card data={newsData}/> : null}
       </div>
