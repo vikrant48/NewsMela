@@ -304,9 +304,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #041b8f;
-}
 
 .weather-card {
   background: linear-gradient(to right, #9cd8f2, #178599); /* Left-to-right gradient */
@@ -363,5 +360,51 @@ button:hover {
   margin-bottom: 5px;
   border-radius: 5px;
 } */
+
+
+/******************************newspaper******************************/
+/* .newstype {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+} */
+
+div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.newstype {
+  margin-top: 10px;
+}
+
+.inline-elements {
+  display: flex;
+  align-items: center; /* Vertically aligns the elements */
+  justify-content: space-between; /* Distributes elements across the line */
+  gap: 10px; /* Adds space between the dropdown and button */
+}
+
+.inline-elements select {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.inline-elements button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Button background color */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.inline-elements button:hover {
+  background-color: #00438b; /* Button color on hover */
+}
+
 
 

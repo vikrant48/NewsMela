@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react'
 import Card from './Card'
 import Weather from './Weather';
+import Newspaper from './NewsPaper';
+
 
 const News = () => {
 
@@ -56,6 +58,7 @@ const News = () => {
         </div>
         <ul>
           <a href="https://www.indiatoday.in/india">All News</a>
+          {/* <Newspaper/> */}
           <a href="https://www.ndtv.com/trends">Treandy</a>
         </ul>
         <div className="searchbar">
@@ -70,8 +73,13 @@ const News = () => {
         <button onClick={userInput} value='international'>International</button>
         <button onClick={userInput} value='fitness'>Fitness</button>
       </div>
-      <div>
-        <button onClick={openWeatherModal}>Cheak Weather Update</button> {/* Weather Button */}
+      {/* <div><Newspaper/></div> */}
+      
+      <div className='newstype'>
+        <div className="inline-elements">
+          <Newspaper/>
+          <button onClick={openWeatherModal}>Cheak Weather Update</button> {/* Weather Button */}
+        </div>
       </div>
       {/* Weather Modal */}
       {isWeatherOpen && (
