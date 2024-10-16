@@ -406,5 +406,91 @@ div {
   background-color: #00438b; /* Button color on hover */
 }
 
+/* General adjustments for small screens */
+@media only screen and (max-width: 600px) {
+  /* Adjust header */
+  h1 {
+    font-size: 24px;
+  }
+
+  /* Adjust navigation */
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  nav ul a {
+    font-size: 14px;
+  }
+
+  /* Adjust search bar */
+  .searchBar input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .searchBar button {
+    width: 100%;
+  }
+
+  /* Adjust category buttons */
+  .categoryBtn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .categoryBtn button {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  /* Weather button and dropdown alignment */
+  .newstype {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .newstype select, .newstype button {
+    width: 100%;
+  }
+
+  /* Card container */
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+
+  /* Adjust footer */
+  footer {
+    text-align: center;
+    font-size: 12px;
+  }
+}
 
 

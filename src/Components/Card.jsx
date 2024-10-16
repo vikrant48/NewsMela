@@ -26,6 +26,7 @@ const Card = ({data}) => {
 
     // Sorting articles by publishedAt date in descending order (most recent first)
     const sortedArticles = [...data].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    const fewarticle = sortedArticles.slice(0,25);
 
     // Function to format the date from publishedAt
     const formatDate = (dateString) => {
@@ -37,10 +38,10 @@ const Card = ({data}) => {
     };
 
 
-  console.log(sortedArticles);
+  // console.log(sortedArticles);
   return (
     <div className="cardcntr">
-        {sortedArticles.map((currItem, index)=>{
+        {fewarticle.map((currItem, index)=>{
           if(!currItem.urlToImage){
             return null
           }
