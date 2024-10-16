@@ -6,7 +6,7 @@ import Newspaper from './NewsPaper';
 
 const News = () => {
 
-  const [search, setsearch] = useState("india");
+  const [search, setsearch] = useState("India");
   const [newsData, setnewsData] = useState(null);
   const [isWeatherOpen, setIsWeatherOpen] = useState(false); // State to control Weather modal
 
@@ -19,7 +19,7 @@ const News = () => {
     try {
       const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=2024-10-12&to=${today}&apiKey=${NEWS_API_KEY}`)
       const jsonData = await responce.json();
-      console.log(jsonData);
+      // console.log(jsonData);
       setnewsData(jsonData.articles)
       // let dt = jsonData.articles.slice(0,10)
       // setNewsData(dt)
