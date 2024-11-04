@@ -4,15 +4,29 @@ import React, { useState } from 'react';
 const Weather = () => {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
-  const API_KEY = "c7320cd2c258903378f41502ecfdc6bd"; // Replace with your actual API key
+  const [error, setError] = useState(null)
+  
+
+  const API_KEY = "c7320cd2c258903378f41502ecfdc6bd";
 
   const getWeather = async () => {
     try {
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+      if (!response.ok) {
+        throw new Error(`Invalid city name. Please try again.`);
+      }
       const data = await response.json();
       setWeatherData(data);
+      setError(null)
     } catch (error) {
-      console.error("Error fetching weather data:", error);
+      setError(error.message)
+      setWeatherData(null)
+      // console.error("Error fetching weather data:", error);
+
+      setTimeout(() => {
+        setError(null)
+        setCity('')
+      }, 3000);
     }
   };
 
@@ -31,6 +45,7 @@ const Weather = () => {
       <div className="input-group">
         <input type="text" placeholder="Enter city name" value={city} onChange={handleCityChange} />
         <button onClick={getWeather}>Get Weather</button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
 
       {weatherData && (
