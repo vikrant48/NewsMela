@@ -17,7 +17,7 @@ const News = () => {
 
   const getData = async()=>{
     try {
-      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=2024-10-12&to=${today}&apiKey=${NEWS_API_KEY}`)
+      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=2024-10-12&to=${today}&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`)
       const jsonData = await responce.json();
       // console.log(jsonData);
       setnewsData(jsonData.articles)
