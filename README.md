@@ -11,6 +11,7 @@ NEWSMELA is a dynamic news aggregation platform that collects and displays headl
   - Entertainment
   - International
   - fitness
+  - more 
 - **Weather Updates**: Real-time weather updates based on user location.
 - **Responsive Design**: Fully responsive design, optimized for mobile and desktop.
 
@@ -29,9 +30,9 @@ To give you an idea of how the website looks and functions, I've provided a scre
 
 
 ## Screenshots
-![Homepage Screenshot](./assets/sreenshots//homepage.png)
-![newspaper Screenshot](./assets/sreenshots/newspaper.png)
-![weather Screenshot](./assets/sreenshots/weather.png)
+![Homepage Screenshot](./assets/sreenshots//homepage1.png)
+![newspaper Screenshot](./assets/sreenshots/login.png)
+![weather Screenshot](./assets/sreenshots/weather1.png)
 
 
 ## Contributing
