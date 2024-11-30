@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../assets/Newspaper.css'
 
 const newspapers = [
   { name: 'The Times of India', url: 'https://timesofindia.indiatimes.com/' },
@@ -19,7 +20,6 @@ const Newspaper = () => {
       setSelectedNewspaper(selectedValue);
   
       if (selectedValue) {
-        // Redirect to the selected newspaper's URL
         window.open(selectedValue, '_blank'); // Opens in a new tab
       }
     };

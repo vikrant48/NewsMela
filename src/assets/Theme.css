@@ -1,0 +1,26 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle {
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    cursor: pointer;
+}
+
+.theme-logo {
+    font-size: 24px;
+    user-select: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.theme-logo:hover {
+    transform: scale(1.1);
+}

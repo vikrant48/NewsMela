@@ -1,0 +1,200 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #0d1b2a;
+    color: white;
+    padding: 30px 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* border: 1px solid #ccc; */
+}
+
+.navbar-left {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid #ccc; */
+}
+
+.nav-buttons {
+    display: flex;
+    /* border: 1px solid #ccc; */
+}
+
+.navbar-left .icon-btn {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.navbar-left .icon-btn:hover {
+    color: #ffcc66;
+}
+
+.navbar-left .date {
+    font-size: 18px;
+    /* margin-top: 2px; */
+    color: #b0c4de;
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* border: 1px solid #ccc; */
+    
+}
+
+.brand-title {
+    font-family: 'Cinzel', serif;
+    font-size: 70px;
+    font-weight: bold;
+    color: #ffcc66;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    /* border: 1px solid #ccc; */
+}
+
+.nav-links {
+    display: flex;
+    /* border: 1px solid #ccc; */
+}
+
+.navbar-right .icon-link {
+    color: white;
+    text-decoration: none;
+    padding: 3px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    /* border: 1px solid #ccc; */
+}
+
+.navbar-right .icon-link:hover {
+    color: #ffcc66;
+}
+
+.navbar-right .signin-btn {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navbar-right .signin-btn:hover {
+    background-color: #ffcc66;
+}
+
+.subscribe-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.subscribe-btn {
+    background-color: #ff5733;
+    color: white;
+    font-size: 18px;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    /* margin-top: 10px; */
+}
+
+.subscribe-btn:hover {
+    background-color: #ff7966;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: rgb(241, 206, 141);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        padding: 8px 30px;
+    }
+
+    .navbar-left {
+        align-items: center;
+    }
+
+    .navbar-center {
+        margin-left: 45px;
+    }
+
+    .navbar-right {
+        margin-left: 45px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .brand-title {
+        font-size: 40px;
+
+    }
+
+    .subscribe-section {
+        flex-direction: column;
+    }
+
+    .navbar-right .icon-link,
+    .navbar-right .signin-btn,
+    .subscribe-btn {
+        font-size: 14px;
+    }
+}

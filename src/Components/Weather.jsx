@@ -1,13 +1,14 @@
-
 import React, { useState } from 'react';
+import '../assets/Weather.css'
 
 const Weather = () => {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null)
-  
+  const [error, setError] = useState(null);
+  const [isWeatherCardVisible, setIsWeatherCardVisible] = useState(false);
 
-  const API_KEY = "c7320cd2c258903378f41502ecfdc6bd";
+
+  // const API_KEY = "c7320cd2c258903378f41502ecfdc6bd";
 
   const getWeather = async () => {
     try {
@@ -18,10 +19,12 @@ const Weather = () => {
       const data = await response.json();
       setWeatherData(data);
       setError(null)
+      setIsWeatherCardVisible(true); // Show the weather card
     } catch (error) {
       setError(error.message)
       setWeatherData(null)
       // console.error("Error fetching weather data:", error);
+      setIsWeatherCardVisible(false);
 
       setTimeout(() => {
         setError(null)
@@ -41,23 +44,55 @@ const Weather = () => {
 
   return (
     <div className="weather-container">
-      <h2>Check Weather</h2>
-      <div className="input-group">
-        <input type="text" placeholder="Enter city name" value={city} onChange={handleCityChange} />
-        <button onClick={getWeather}>Get Weather</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-      </div>
+      <button onClick={() => setIsWeatherCardVisible(true)} className="check-weather-btn">
+        Check Weather Update
+      </button>
 
-      {weatherData && (
-        <div className="weather-card">
-          <h3>{weatherData.name}</h3>
-          <p><i className="fas fa-thermometer-half"></i> <strong>Temperature:</strong> {weatherData.main.temp} °C</p>
-          <p><i className="fas fa-cloud-sun"></i> <strong>Weather:</strong> {weatherData.weather[0].description}</p>
-          <p><i className="fas fa-tint"></i> <strong>Humidity:</strong> {weatherData.main.humidity}%</p>
-          <p><i className="fas fa-wind"></i> <strong>Wind Speed:</strong> {weatherData.wind.speed} m/s</p>
-          <p><i className="fas fa-tachometer-alt"></i> <strong>Pressure:</strong> {weatherData.main.pressure} hPa</p>
-          <p><i className="fas fa-sun"></i> <strong>Sunrise:</strong> {convertTime(weatherData.sys.sunrise)}</p>
-          <p><i className="fas fa-moon"></i> <strong>Sunset:</strong> {convertTime(weatherData.sys.sunset)}</p>
+      {isWeatherCardVisible && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Check Weather</h2>
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder="Enter city name"
+                value={city}
+                onChange={handleCityChange}
+              />
+              <button onClick={getWeather}>Get Weather</button>
+              {error && <p style={{ color: 'red' }}>{error}</p>}
+            </div>
+
+            {weatherData && (
+              <div className="weather-card">
+                <h3>{weatherData.name}</h3>
+                <p>
+                  <strong>Temperature:</strong> {weatherData.main.temp} °C
+                </p>
+                <p>
+                  <strong>Weather:</strong> {weatherData.weather[0].description}
+                </p>
+                <p>
+                  <strong>Humidity:</strong> {weatherData.main.humidity}%
+                </p>
+                <p>
+                  <strong>Wind Speed:</strong> {weatherData.wind.speed} m/s
+                </p>
+                <p>
+                  <strong>Pressure:</strong> {weatherData.main.pressure} hPa
+                </p>
+                <p>
+                  <strong>Sunrise:</strong> {convertTime(weatherData.sys.sunrise)}
+                </p>
+                <p>
+                  <strong>Sunset:</strong> {convertTime(weatherData.sys.sunset)}
+                </p>
+              </div>
+            )}
+            <button onClick={() => setIsWeatherCardVisible(false)} className="close-btn">
+              ✖
+            </button>
+          </div>
         </div>
       )}
     </div>

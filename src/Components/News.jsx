@@ -1,124 +1,89 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from './Card'
 import Weather from './Weather';
 import Newspaper from './NewsPaper';
+import Nav from './Nav';
+import Footer from './Footer'
+
 
 
 const News = () => {
-
-  const [search, setsearch] = useState("India");
   const [newsData, setnewsData] = useState(null);
-  const [isWeatherOpen, setIsWeatherOpen] = useState(false); // State to control Weather modal
+  const [search, setsearch] = useState("Search news");
 
-  const NEWS_API_KEY = 'f36c2bdbc4114e48861a0c424f4a1363';
+  // const NEWS_API_KEY1 = 'f36c2bdbc4114e48861a0c424f4a1363';
+  const NEWS_API_KEY2 = '80e6b3ba365b40e1a5934da3791a5215';
 
   const today = new Date().toISOString().split('T')[0];
-  console.log(today); // Output: 'YYYY-MM-DD'
+  // console.log(today); // Output: 'YYYY-MM-DD'
 
-  const getData = async()=>{
+  const getData = async () => {
     try {
-      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=2024-10-12&to=${today}&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`)
+      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=2024-11-01&to=${today}&sortBy=publishedAt&apiKey=${NEWS_API_KEY1}`)
       const jsonData = await responce.json();
       // console.log(jsonData);
       setnewsData(jsonData.articles)
-      // let dt = jsonData.articles.slice(0,10)
-      // setNewsData(dt)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
 
   }
-  useEffect(()=>{
+  useEffect(() => {
     getData()
-  },[search])
+  }, [search])
 
-  const handleinput = (e)=>{
+  const handleinput = (e) => {
     setsearch(e.target.value)
 
   }
-  const userInput = (e)=>{
+  const userInput = (e) => {
     setsearch(e.target.value)
 
   }
-
-  const openWeatherModal = () => {
-    setIsWeatherOpen(true);  // Open Weather modal
-  };
-
-  const closeWeatherModal = () => {
-    setIsWeatherOpen(false); // Close Weather modal
-  };
 
   return (
     <>
-    <div>
-      <nav>
-        <div>
-          <h1>NEWSMELA</h1>
-        </div>
-        <ul>
-          <a href="https://www.indiatoday.in/india">All News</a>
-          {/* <Newspaper/> */}
-          <a href="https://www.ndtv.com/trends">Treandy</a>
-        </ul>
-        <div className="searchbar">
-          <input type="text" placeholder='searchnews' value ={search} onChange={handleinput} />
-          <button onClick={getData}>Search</button>
-        </div>
-      </nav>
-      <div className="catogarybtn">
-        <button onClick={userInput} value='sport'>Sports</button>
-        <button onClick={userInput} value='politics'>Politics</button>
-        <button onClick={userInput} value='entertainment'>Entertainment</button>
-        <button onClick={userInput} value='international'>International</button>
-        <button onClick={userInput} value='fitness'>Fitness</button>
-      </div>
-      {/* <div><Newspaper/></div> */}
-      
-      <div className='newstype'>
-        <div className="inline-elements">
-          <Newspaper/>
-          <button onClick={openWeatherModal}>Cheak Weather Update</button> {/* Weather Button */}
-        </div>
-      </div>
-      {/* Weather Modal */}
-      {isWeatherOpen && (
-          <div className="weatherModal">
-            <div className="modalContent">
-              <Weather />
-              <button onClick={closeWeatherModal} className="closeModal">Close</button> {/* Close button */}
-            </div>
-          </div>
-        )}
+      <Nav />
       <div>
-        {newsData?  <Card data={newsData}/> : null}
-      </div>
-      <footer className='footerStyles'>
-      <div className='footerContainer'>
-        <div className='footerLeft'>
-          <h3>NEWSMELA</h3>
-          <p>Stay updated with the latest news from around the world.</p>
-        </div>
-        <div className='footerCenter'>
-          <ul className='footerLinks'>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div className='footerRight'>
-          <p>&copy; 2024 NewsMela All rights reserved.</p>
-          <p>Follow us on:</p>
-          <div className='socialLinks'>
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
+        <div className="searchnews">
+          <div className="searchbar">
+            <input
+              type="text"
+              placeholder="Search news"
+              value={search}
+              onChange={handleinput}
+            />
+            <button className="srchbtn" onClick={getData}>🔍</button>
+          </div>
+
+          <div className="catogarybtn">
+            <button onClick={userInput} value='India'>India</button>
+            <button onClick={userInput} value='U.S.'>U.S.</button>
+            <button onClick={userInput} value='Sport'>Sports</button>
+            <button onClick={userInput} value='Politics'>Politics</button>
+            <button onClick={userInput} value='Entertainment'>Entertainment</button>
+            <button onClick={userInput} value='International'>International</button>
+            <button onClick={userInput} value='Fitness'>Fitness</button>
+            <button onClick={userInput} value='Business'>Business</button>
+            <button onClick={userInput} value='World'>World</button>
+            <button onClick={userInput} value='Arts'>Arts</button>
+            <button onClick={userInput} value='AI'>AI</button>
           </div>
         </div>
+
+        <div className="news-weather-container">
+          <div className="newspaper-section">
+            <Newspaper />
+          </div>
+          <div className="weather-section">
+            <Weather />
+          </div>
+        </div>
+        <div>
+          {newsData ? <Card data={newsData} /> : null}
+        </div>
+        <Footer />
       </div>
-      </footer>
-    </div>
-   
     </>
   )
 }
