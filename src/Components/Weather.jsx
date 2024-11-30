@@ -8,7 +8,7 @@ const Weather = () => {
   const [isWeatherCardVisible, setIsWeatherCardVisible] = useState(false);
 
 
-  // const API_KEY = "c7320cd2c258903378f41502ecfdc6bd";
+  const API_KEY = "c7320cd2c258903378f41502ecfdc6bd";
 
   const getWeather = async () => {
     try {
