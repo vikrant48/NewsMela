@@ -13,6 +13,8 @@ NEWSMELA is a dynamic news aggregation platform that collects and displays headl
   - fitness
   - more 
 - **Weather Updates**: Real-time weather updates based on user location.
+- **Currency Convertor**: Currency converter tool that allows users to convert between different currencies using live exchange rates.
+- **Theme Toggole**: Light and Dark Mode.
 - **Responsive Design**: Fully responsive design, optimized for mobile and desktop.
 
 ## Tech Stack
