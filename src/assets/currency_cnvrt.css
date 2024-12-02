@@ -1,0 +1,133 @@
+
+.currency-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.check-currency-btn {
+  background-color: #1b1c1a;
+  color: #fff;
+  border: 1px solid white;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.check-currency-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f1efc6;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 400px;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Fade-in Animation for Popup */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Card Title */
+.container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #007bff;
+  text-align: center;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/* Input Fields */
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* Select Dropdown */
+. .container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* Close Button */
+.container .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.container .close-btn:hover {
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .currency-container {
+    padding: 0.5rem;
+  }
+  .container {
+    padding: 1.5rem;
+    width: 90%;
+  }
+
+  .check-currency-btn {
+    padding: 10px 35px;
+    font-size: 0.8rem;
+  }
+}

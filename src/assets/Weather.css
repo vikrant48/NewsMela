@@ -16,14 +16,20 @@ input[type="text"] {
 }
 
 button {
-    padding: 12px 30px;
+    padding: 10px 30px;
     background-color: #1b1c1a;
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    border: 1px solid #ddd; 
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
 
 .weather-card {
     background: linear-gradient(to right, #9cd8f2, #178599);
@@ -84,4 +90,16 @@ button {
 
 .close-btn:hover {
     background-color: #ffcc66;
+}
+
+@media (max-width: 768px){
+    .weather-container {
+        padding: 3px 0;
+        font-size: 12px;
+    }
+    button {
+        padding: 10px 25px;
+        font-size: 0.8rem;
+    
+    }
 }

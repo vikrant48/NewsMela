@@ -5,5 +5,13 @@
     border: 1px solid #1b1717;
     background-color: rgb(31, 27, 27);
     color: #ddd;
-    border: 1px solid #ddd; 
+    border: 1px solid #ddd
+  }
+
+  @media (max-width: 768px){
+    select {
+      padding: 9px 11px;
+      font-size: 14px;
+    }
+    
   }

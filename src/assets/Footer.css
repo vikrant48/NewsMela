@@ -98,28 +98,25 @@
 
     .footerLeft, .footerCenter, .footerRight {
         text-align: center;
-        margin-bottom: 5px;
+        /* margin-bottom: 1px; */
     }
     .footerLeft p {
-        font-size: 14px;
-        margin-top: 3px;
+        font-size: 12px;
     }
     .footerLeft h3 {
         font-size: 30px;   
     }
 
     .footerLinks a {
-        font-size: 14px;
-        margin-bottom: 5px;
+        font-size: 12px;
     }
 
     .socialLinks a {
-        font-size: 14px;
-        margin-bottom: 5px;
+        font-size: 12px;
     }
 
     .footerRight p {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 

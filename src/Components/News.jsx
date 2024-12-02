@@ -4,6 +4,7 @@ import Weather from './Weather';
 import Newspaper from './NewsPaper';
 import Nav from './Nav';
 import Footer from './Footer'
+import CurrencyConvertor from './CurrencyConvertor';
 
 
 
@@ -74,6 +75,9 @@ const News = () => {
         <div className="news-weather-container">
           <div className="newspaper-section">
             <Newspaper />
+          </div>
+          <div className="currency-section">
+            <CurrencyConvertor/>
           </div>
           <div className="weather-section">
             <Weather />

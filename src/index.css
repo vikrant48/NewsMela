@@ -32,12 +32,12 @@ h3 {
   border-radius: 3px;
   margin-right: 10px;
   width: 200px;
-  border: 1px solid #ccc;
+  border: 1px solid #2b2a2a;
 }
 .searchbar button {
   padding: 7.5px 20px;
   color: rgb(255, 255, 255);
-  font-size: 18px;
+  font-size: 17.5px;
   cursor: pointer;
   border-radius: 5px;
   border: 0.5px solid #ffffff; 
@@ -68,8 +68,6 @@ h3 {
   background-color: #f39c12;
 }
 
-
-
 .news-weather-container {
   display: flex;
   justify-content: space-between;
@@ -84,6 +82,11 @@ h3 {
   text-align: left; 
 }
 
+.currency-section {
+  flex: 1;
+  text-align: center;
+}
+
 .weather-section {
   flex: 1; 
   text-align: right; 
@@ -92,18 +95,20 @@ h3 {
 @media (max-width: 768px) {
   .searchnews {
     flex-direction: column; 
-    align-items: flex-start;
-    padding: 8px 35px;
+    align-items: center;
+    /* padding: 8px 40px; */
   }
 
   .searchbar input[type="text"] {
-    /* width: 100%;  */
-    margin-bottom: 10px; 
+    /* padding: 5px 8px; */
+    /* margin-bottom: 15px 30px; */
+    width: 110px;
   }
 
-  /* .searchbar button {
-    width: 100%; 
-  } */
+  .searchbar button {
+    /* padding: 0 20px; */
+    /* font-size: 12px; */
+  }
 
   .catogarybtn {
     display: none; 
@@ -111,14 +116,15 @@ h3 {
 
   .news-weather-container {
     flex-direction: column; 
-    align-items: flex-start; 
-    padding: 8px 40px;
+    align-items: stretch; 
+    padding: 4px 40px;
   }
 
   .newspaper-section,
-  .weather-section {
-    /* width: 100%;  */
-    margin-bottom: 10px; 
+  .weather-section ,
+  .currency-section {
+    text-align: center;
+    margin-bottom: 5px; 
   }
 }
 

@@ -45,6 +45,14 @@ body {
     color: #b0c4de;
 }
 
+.hamburger-btn {
+    background-color: transparent;
+    color: #fafafa;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+  }
+
 .navbar-center {
     display: flex;
     align-items: center;
@@ -161,40 +169,65 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+    .navbar-content {
+        display: none;
+        flex-direction: column;
+        background-color: #444;
+        width: 100%;
+        padding: 20px;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        left: 0;
+        z-index: 100;
+      }
     .navbar {
         flex-direction: column;
         text-align: center;
-        padding: 8px 30px;
+        padding: 8px 58px;
     }
+
+    .navbar-content.show-menu {
+        display: flex;
+      }
+    
+      .hamburger-btn {
+        display: block;
+      }
 
     .navbar-left {
         align-items: center;
+        /* display: none; */
+    }
+    .navbar-left .nav-buttons {
+        display: none;
     }
 
-    .navbar-center {
-        margin-left: 45px;
+    .navbar-left .date {
+        font-size: 14px;
     }
 
     .navbar-right {
-        margin-left: 45px;
+        display: none;
     }
 
-    .nav-links {
-        flex-direction: column;
+    .navbar-right .nav-links {
+        /* flex-direction: column; */
+        display: none;
     }
 
     .brand-title {
+        margin: 0 auto;
         font-size: 40px;
 
     }
 
     .subscribe-section {
-        flex-direction: column;
+        /* flex-direction: column; */
     }
 
     .navbar-right .icon-link,
     .navbar-right .signin-btn,
     .subscribe-btn {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
