@@ -12,7 +12,7 @@ const News = () => {
   const [newsData, setnewsData] = useState(null);
   const [search, setsearch] = useState("Search news");
 
-  // const NEWS_API_KEY1 = 'f36c2bdbc4114e48861a0c424f4a1363';
+  const NEWS_API_KEY1 = 'f36c2bdbc4114e48861a0c424f4a1363';
   const NEWS_API_KEY2 = '80e6b3ba365b40e1a5934da3791a5215';
 
   const today = new Date().toISOString().split('T')[0];
