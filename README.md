@@ -45,12 +45,12 @@ NEWSMELA is a dynamic news aggregation platform that collects and displays headl
 ## Note: API Fetching Issues After Deployment
 Due to an issue with fetching data from the News API after deployment (e.g., CORS errors, API key restrictions, or server configuration problems), the live version of this project might not display the news articles as expected. To demonstrate functionality, a screen recording of the working local version is provided:
 
-<!-- ### Screen Recording -->
-<!-- ![recording](./assets/sreenshots/recording.gif) -->
-## Screenshots
+### Screen Recording -->
+![recording](./assets/sreenshots/recording.gif)
+<!-- ## Screenshots
 ![Homepage Screenshot](./assets/screenshots/homepage1.png)
 ![Newspaper Screenshot](./assets/screenshots/login.png)
-![Weather Screenshot](./assets/screenshots/weather1.png)
+![Weather Screenshot](./assets/screenshots/weather1.png) -->
 
 ## What Makes NewsMela Unique
 - **Dynamic News Aggregation**: Collects real-time headlines from multiple sources.
