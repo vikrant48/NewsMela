@@ -27,7 +27,7 @@ function Footer() {
                     <ul className='footerLinks'>
                         <li><a href="#">Advertise with us </a></li>
                         <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">T&C</a></li>
+                        <li><a href="#">T&C </a></li>
                         <li><a href="#">Cookies</a></li>
                     </ul>
                 </div>
