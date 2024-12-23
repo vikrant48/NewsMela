@@ -19,6 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     /* border: 1px solid #ccc; */
+    gap: 15px;
 }
 
 .nav-buttons {
@@ -33,6 +34,8 @@ body {
     font-size: 20px;
     cursor: pointer;
     transition: color 0.3s ease;
+    /* border: 1px solid #ccc; */
+    padding: 0 4px;
 }
 
 .navbar-left .icon-btn:hover {
@@ -41,17 +44,10 @@ body {
 
 .navbar-left .date {
     font-size: 18px;
-    /* margin-top: 2px; */
+    margin-top: 8px;
     color: #b0c4de;
+    /* border: 1px solid #ccc; */
 }
-
-.hamburger-btn {
-    background-color: transparent;
-    color: #fafafa;
-    font-size: 24px;
-    border: none;
-    cursor: pointer;
-  }
 
 .navbar-center {
     display: flex;
@@ -86,7 +82,7 @@ body {
 .navbar-right .icon-link {
     color: white;
     text-decoration: none;
-    padding: 3px 15px;
+    padding: 0 9px;
     font-size: 20px;
     cursor: pointer;
     transition: color 0.3s ease;
@@ -101,7 +97,8 @@ body {
 .subscribe-section {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    /* border: 1px solid #ccc; */
 }
 
 

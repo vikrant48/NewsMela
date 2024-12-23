@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
-//Icon
+import React, { useState, useEffect } from "react";
 import userIcon from "./img/user.svg";
 import emailIcon from "./img/email.svg";
 import passwordIcon from "./img/password.svg";
-// Validate
-import { validate } from "./validate";
-// Styles
-import styles from "./SignUp.module.css";
-import "react-toastify/dist/ReactToastify.css";
-// Toast
-import { ToastContainer, toast } from "react-toastify";
-import { notify } from "./toast";
-//
-import { Link } from "react-router-dom";
-// Axios
-import axios from "axios";
+import "./Oath.css"; // Add necessary CSS styles
 
-const SignUp = () => {
+const SignUp = ({ togglePage }) => {
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -26,102 +14,131 @@ const SignUp = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [touched, setTouched] = useState({});
+  const [submitted, setSubmitted] = useState(false); // New state to track submission
 
-  useEffect(() => {
-    setErrors(validate(data, "signUp"));
-  }, [data, touched]);
-
-  const changeHandler = (event) => {
-    if (event.target.name === "IsAccepted") {
-      setData({ ...data, [event.target.name]: event.target.checked });
-    } else {
-      setData({ ...data, [event.target.name]: event.target.value });
+  const validate = (values) => {
+    const errors = {};
+    if (!values.name) errors.name = "Name is required.";
+    if (!values.email) {
+      errors.email = "Email is required.";
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Email is invalid.";
     }
+    if (!values.password) errors.password = "Password is required.";
+    else if (values.password.length < 6)
+      errors.password = "Password must be at least 6 characters.";
+    if (!values.confirmPassword) {
+      errors.confirmPassword = "Confirm Password is required.";
+    } else if (values.confirmPassword !== values.password) {
+      errors.confirmPassword = "Passwords do not match.";
+    }
+    if (!values.IsAccepted) errors.IsAccepted = "You must accept the privacy policy.";
+    return errors;
   };
 
-  const focusHandler = (event) => {
-    setTouched({ ...touched, [event.target.name]: true });
+  useEffect(() => {
+    if (submitted) {
+      setErrors(validate(data));
+    }
+  }, [data, submitted]); // Validate only after submission
+
+  const changeHandler = (event) => {
+    const { name, value, type, checked } = event.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (!Object.keys(errors).length) {
-      // Pushing data to database usuing PHP script
-      const urlApi = `https://lightem.senatorhost.com/login-react/index.php?email=${data.email.toLowerCase()}&password=${data.password}&register=true`;
-      const pushData = async () => {
-        const responseA = axios.get(urlApi);
-        const response = await toast.promise(responseA, {
-          pending: "Check your data",
-          success: "Checked!",
-          error: "Something went wrong!",
-        });
-        if (response.data.ok) {
-          notify("You signed Up successfully", "success");
-        } else {
-          notify("You have already registered, log in to your account", "warning");
-        }
-      };
-      pushData();
-    } else {
-      notify("Please Check fileds again", "error");
-      setTouched({
-        name: true,
-        email: true,
-        password: true,
-        confirmPassword: true,
+    const validationErrors = validate(data);
+    setErrors(validationErrors);
+    setSubmitted(true);
+
+    if (!Object.keys(validationErrors).length) {
+      console.log("Form Submitted", data);
+      alert("Account created successfully!");
+      setData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
         IsAccepted: false,
       });
+      setSubmitted(false); // Reset submission state
     }
   };
 
   return (
-    <div className={styles.container}>
-      <form className={styles.formLogin} onSubmit={submitHandler} autoComplete="off">
-        <h2>Sign Up</h2>
-        <div>
-          <div className={errors.name && touched.name ? styles.unCompleted : !errors.name && touched.name ? styles.completed : undefined}>
-            <input type="text" name="name" value={data.name} placeholder="Name" onChange={changeHandler} onFocus={focusHandler} autoComplete="off" />
-            <img src={userIcon} alt="" />
-          </div>
-          {errors.name && touched.name && <span className={styles.error}>{errors.name}</span>}
+    <div className="auth-container">
+      <form className="form-login" onSubmit={submitHandler}>
+        <h2 className="heading">Sign Up</h2>
+
+        <div className={`input-group ${errors.name ? "input-error" : ""}`}>
+          <input
+            type="text"
+            name="name"
+            value={data.name}
+            placeholder="Name"
+            onChange={changeHandler}
+          />
+          <img src={userIcon} alt="User Icon" />
         </div>
-        <div>
-          <div className={errors.email && touched.email ? styles.unCompleted : !errors.email && touched.email ? styles.completed : undefined}>
-            <input type="text" name="email" value={data.email} placeholder="E-mail" onChange={changeHandler} onFocus={focusHandler} autoComplete="off" />
-            <img src={emailIcon} alt="" />
-          </div>
-          {errors.email && touched.email && <span className={styles.error}>{errors.email}</span>}
+        {errors.name && <span className="error">{errors.name}</span>}
+
+        <div className={`input-group ${errors.email ? "input-error" : ""}`}>
+          <input
+            type="text"
+            name="email"
+            value={data.email}
+            placeholder="E-mail"
+            onChange={changeHandler}
+          />
+          <img src={emailIcon} alt="Email Icon" />
         </div>
-        <div>
-          <div className={errors.password && touched.password ? styles.unCompleted : !errors.password && touched.password ? styles.completed : undefined}>
-            <input type="password" name="password" value={data.password} placeholder="Password" onChange={changeHandler} onFocus={focusHandler} autoComplete="off" />
-            <img src={passwordIcon} alt="" />
-          </div>
-          {errors.password && touched.password && <span className={styles.error}>{errors.password}</span>}
+        {errors.email && <span className="error">{errors.email}</span>}
+
+        <div className={`input-group ${errors.password ? "input-error" : ""}`}>
+          <input
+            type="password"
+            name="password"
+            value={data.password}
+            placeholder="Password"
+            onChange={changeHandler}
+          />
+          <img src={passwordIcon} alt="Password Icon" />
         </div>
-        <div>
-          <div className={errors.confirmPassword && touched.confirmPassword ? styles.unCompleted : !errors.confirmPassword && touched.confirmPassword ? styles.completed : !errors.confirmPassword && touched.confirmPassword ? styles.completed : undefined}>
-            <input type="password" name="confirmPassword" value={data.confirmPassword} placeholder="Confirm Password" onChange={changeHandler} onFocus={focusHandler} autoComplete="off" />
-            <img src={passwordIcon} alt="" />
-          </div>
-          {errors.confirmPassword && touched.confirmPassword && <span className={styles.error}>{errors.confirmPassword}</span>}
+        {errors.password && <span className="error">{errors.password}</span>}
+
+        <div className={`input-group ${errors.confirmPassword ? "input-error" : ""}`}>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={data.confirmPassword}
+            placeholder="Confirm Password"
+            onChange={changeHandler}
+          />
+          <img src={passwordIcon} alt="Password Icon" />
         </div>
-        <div>
-          <div className={styles.terms}>
-            <input type="checkbox" name="IsAccepted" value={data.IsAccepted} id="accept" onChange={changeHandler} onFocus={focusHandler} />
-            <label htmlFor="accept">I accept terms of privacy policy</label>
-          </div>
-          {errors.IsAccepted && touched.IsAccepted && <span className={styles.error}>{errors.IsAccepted}</span>}
+        {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+
+        <div className="checkbox-group">
+          <input
+            type="checkbox"
+            name="IsAccepted"
+            checked={data.IsAccepted}
+            onChange={changeHandler}
+          />
+          <label>I accept the privacy policy</label>
         </div>
-        <div>
-          <button type="submit">Create Account</button>
-          <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%" }}>
-            Already have a account? <Link to="/login">Sign In</Link>
-          </span>
-        </div>
+        {errors.IsAccepted && <span className="error">{errors.IsAccepted}</span>}
+
+        <button type="submit" className="submit-btn">Create Account</button>
+        <p className="toggle">
+          Already have an account? <a href="#" onClick={ togglePage }>Login</a>
+        </p>
       </form>
-      <ToastContainer />
     </div>
   );
 };

@@ -2,15 +2,15 @@
     padding: 10px;
     border-radius: 5px;
     font-size: 14px;
-    border: 1px solid #1b1717;
+    /* border: 1px solid #1b1717; */
     background-color: rgb(31, 27, 27);
     color: #ffffff;
-    border: 1.5px solid #ddd
+    border: 1px solid white
   }
 
   @media (max-width: 768px){
     select {
-      padding: 8px 10px;
+      padding: 8px 21px;
       font-size: 16px;
     }
     

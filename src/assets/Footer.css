@@ -4,7 +4,7 @@
     color: white;
     padding: 20px 150px;
     font-family: Arial, sans-serif;
-    /* border: 0.5px solid #ffffff;  */
+    /* border: 1px solid #ffffff;  */
 }
 
 .footerContainer {
@@ -13,11 +13,13 @@
     align-items: center;
     margin: 0 auto;
     flex-wrap: wrap; 
+    /* border: 1px solid #ffffff; */
 }
 
 .footerLeft {
     flex: 1;
     text-align: left;
+    /* border: 1px solid #ffffff; */
 }
 
 .footerLeft h3 {
@@ -34,8 +36,9 @@
 }
 
 .footerCenter {
-    flex: 2;
+    flex: 1;
     text-align: center;
+    /* border: 1px solid #ffffff; */
 }
 
 .footerLinks {
@@ -44,6 +47,7 @@
     display: flex;
     justify-content: center;
     gap: 30px; 
+    /* border: 1px solid #ffffff; */
 }
 
 .footerLinks li {
@@ -53,7 +57,7 @@
 .footerLinks a {
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 14px;
     transition: color 0.3s ease;
 }
 
@@ -64,27 +68,39 @@
 .footerRight {
     flex: 1;
     text-align: right;
+    /* border: 1px solid #ffffff; */
 }
 
 .socialLinks {
-    margin-bottom: 10px;
+    display: flex;
+    gap: 20px; 
+    justify-content: right; 
+    margin-top: 20px;
 }
 
 .socialLinks a {
     color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 20px;
+    font-size: 24px; 
     transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 .socialLinks a:hover {
     color: #f39c12; 
 }
 
-.footerRight p {
-    font-size: 18px;
-    margin-top: 10px;
+.footerCredits p {
+    margin: 5px 0;
+}
+
+.footerCredits a {
+    color: #f39c12;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footerCredits a:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -96,10 +112,16 @@
         align-items: center;
     }
 
-    .footerLeft, .footerCenter, .footerRight {
+    .footerLeft, .footerRight {
         text-align: center;
         /* margin-bottom: 1px; */
     }
+
+    .footerCenter {
+        display: none;
+    }
+
+
     .footerLeft p {
         font-size: 12px;
     }
@@ -109,6 +131,12 @@
 
     .footerLinks a {
         font-size: 12px;
+    }
+
+    .socialLinks {
+
+        justify-content: center; 
+
     }
 
     .socialLinks a {

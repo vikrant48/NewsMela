@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/Nav.css';
-import UserAccount from './UserAccount';
 import ThemeToggle from './Theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
@@ -51,7 +50,7 @@ const Nav = () => {
                     <a href="https://www.indiatoday.in/india" className="icon-link">📰 E-Paper</a>
                 </div>
                 <div className="subscribe-section">
-                    <UserAccount />
+                    <LoginApp/>
                     <Subscribe />
                 </div>
             </div>

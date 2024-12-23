@@ -1,16 +1,42 @@
-import React from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import React, { useState } from "react";
 import SignUp from "./UserAccount/SignUp";
 import Login from "./UserAccount/Login";
 
 function LoginApp() {
+  const [showUserAccount, setShowUserAccount] = useState(false);
+  const [isSignIn, setIsSignIn] = useState(true);
+
+  const toggleUserAccount = () => {
+    setShowUserAccount(!showUserAccount);
+  };
+
+  const togglePage = () => {
+    setIsSignIn(!isSignIn);
+  };
+  
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
-      {/* Redirect from "/" to "/signup" */}
-      <Route path="*" element={<Navigate to="/signup" replace />} />
-    </Routes>
+
+    <div className="signin-cnt">
+      <button className="signin-btn" onClick={toggleUserAccount}>Sign In</button>
+
+      {showUserAccount && (
+        <div className="modal">
+          <div className="modal-content">
+            <button className="close-btn" onClick={toggleUserAccount}>✖</button>
+
+            <div className="app-container">
+              {isSignIn ? (
+                <Login togglePage={togglePage} />
+              ) : (
+                <SignUp togglePage={togglePage} />
+              )}
+            </div>
+
+          </div>
+        </div>
+      )}
+    </div>
+
   );
 }
 
