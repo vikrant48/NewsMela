@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import emailIcon from "./img/email.svg";
 import passwordIcon from "./img/password.svg";
-import "./oath.css";
+import "./Oath.css";
 
 const Login = ({ togglePage }) => {
   const [data, setData] = useState({
