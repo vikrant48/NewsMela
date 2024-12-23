@@ -27,7 +27,7 @@ const Newspaper = () => {
     return (
       <div>
         {/* <h2>Select a Newspaper</h2> */}
-        <select onChange={handleSelection} value={selectedNewspaper}>
+        <select className='newspaper' onChange={handleSelection} value={selectedNewspaper}>
           <option value="">-- Select Newspaper --</option>
           {newspapers.map((paper, index) => (
             <option key={index} value={paper.url}>

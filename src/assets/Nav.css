@@ -97,19 +97,6 @@ body {
     color: #ffcc66;
 }
 
-.navbar-right .signin-btn {
-    background-color: #f39c12;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.navbar-right .signin-btn:hover {
-    background-color: #ffcc66;
-}
 
 .subscribe-section {
     display: flex;
@@ -117,55 +104,6 @@ body {
     gap: 10px;
 }
 
-.subscribe-btn {
-    background-color: #ff5733;
-    color: white;
-    font-size: 18px;
-    border: none;
-    padding: 8px 30px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    /* margin-top: 10px; */
-}
-
-.subscribe-btn:hover {
-    background-color: #ff7966;
-}
-
-/* Modal Styles */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background: rgb(241, 206, 141);
-    padding: 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #333;
-}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -217,13 +155,9 @@ body {
     }
 
     .brand-title {
-        margin: 0 auto;
+        margin: 0 10px;
         font-size: 40px;
 
-    }
-
-    .subscribe-section {
-        /* flex-direction: column; */
     }
 
     .navbar-right .icon-link,

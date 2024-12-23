@@ -4,14 +4,14 @@
     font-size: 14px;
     border: 1px solid #1b1717;
     background-color: rgb(31, 27, 27);
-    color: #ddd;
-    border: 1px solid #ddd
+    color: #ffffff;
+    border: 1.5px solid #ddd
   }
 
   @media (max-width: 768px){
     select {
-      padding: 9px 11px;
-      font-size: 14px;
+      padding: 8px 10px;
+      font-size: 16px;
     }
     
   }

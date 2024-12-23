@@ -1,12 +1,4 @@
 
-.currency-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
 .check-currency-btn {
   background-color: #1b1c1a;
   color: #fff;
@@ -23,111 +15,83 @@
   transform: scale(1.05);
 }
 
-.container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #f1efc6;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
-  width: 90%;
-  max-width: 400px;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out;
+.currency-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 10px;
+  /* background-color: #4CAF50; */
 }
 
-/* Fade-in Animation for Popup */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -55%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
-/* Card Title */
-.container h1 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #007bff;
-  text-align: center;
-}
-
-/* Labels */
-label {
-  display: block;
-  font-weight: bold;
+.currency-card label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0d0d0d;
   margin-bottom: 5px;
-  color: #333;
-  font-size: 0.9rem;
 }
 
-/* Input Fields */
-input[type="number"] {
-  width: 100%;
+.currency-card select,
+.currency-card input {
   padding: 10px;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
+  font-size: 16px;
+  width: 400px;
+  box-sizing: border-box;
+  margin-top: 5px;
 }
 
-input[type="number"]:focus {
-  border-color: #4caf50;
+.currency-card input[type="number"] {
+  text-align: left;
+}
+
+.currency-card select {
+  background-color: #3f3f3f;
+}
+
+.currency-card select:focus,
+.currency-card input:focus {
+  border-color: #4CAF50;
   outline: none;
 }
 
-/* Select Dropdown */
-. .container select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s ease;
+.currency-card div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-select:focus {
-  border-color: #4caf50;
-  outline: none;
-}
-
-/* Close Button */
-.container .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #999;
-}
-
-.container .close-btn:hover {
-  color: #333;
-}
-
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .currency-container {
-    padding: 0.5rem;
-  }
-  .container {
-    padding: 1.5rem;
-    width: 90%;
-  }
 
   .check-currency-btn {
-    padding: 10px 35px;
-    font-size: 0.8rem;
+    font-size: 16px;
+    padding: 8px 28px;
+}
+  .currency-card {
+      gap: 15px;
+  }
+
+  .currency-card select,
+  .currency-card input {
+      width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .check-currency-btn {
+      font-size: 16px;
+      padding: 8px 32px;
+  }
+
+  .currency-card label {
+      font-size: 14px;
+  }
+
+  .currency-card select,
+  .currency-card input {
+      font-size: 14px;
+      padding: 8px;
   }
 }

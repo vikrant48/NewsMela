@@ -8,10 +8,10 @@ function CurrencyConvertor() {
     const [fromVal, setFromval] = useState(0)
     const [toVal, setToval] = useState(0)
     const [iscurrcardvisible, setiscurrcardvisible] = useState(false)
-    console.log(from)
-    console.log(to)
-    console.log(fromVal)
-    console.log(toVal)
+    // console.log(from)
+    // console.log(to)
+    // console.log(fromVal)
+    // console.log(toVal)
 
     // const currencyInfo = usecurrencyInfo(from,live)
     // const currencycods = usecurrencyInfo(from, list)
@@ -49,57 +49,57 @@ function CurrencyConvertor() {
                 Currency Convertor
             </button>
             {iscurrcardvisible && (
-                <div className="container">
-                    <button
-                        className="close-btn"
-                        onClick={() => setiscurrcardvisible(false)}
-                    >
-                        &times;
-                    </button>
-                    <h1>currency convertor</h1>
-                    <div>
-                        <label htmlFor="currency">Select Currency:</label>
-                        <select
-                            value={from}
-                            onChange={(e) => { setfrom(e.target.value) }}>
-                            {currencyCodes.map((code) => (
-                                <option key={code} value={code}>
-                                    {code}
-                                </option>
-                            ))}
-                        </select>
-                        <label>From</label>
-                        <input
-                            type="number"
-                            value={fromVal}
-                            onChange={(e) => { setFromval(e.target.value) }}
-                        />
+                <div className="modal">
+                    <div className="modal-content">
+                        <button className="close-btn" onClick={() => setiscurrcardvisible(false)}>✖</button>
+                        <h2 className="modal-heading" >currency convertor</h2>
+                        <div className="currency-card">
+                            <div>
+                                <label className='label-head'>From</label>
+                                <label htmlFor="currency">Select Currency:</label>
+                                <select
+                                    value={from}
+                                    onChange={(e) => { setfrom(e.target.value) }}>
+                                    {currencyCodes.map((code) => (
+                                        <option key={code} value={code}>
+                                            {code}
+                                        </option>
+                                    ))}
+                                </select>
+                                
+                                <input
+                                    type="number"
+                                    value={fromVal}
+                                    onChange={(e) => { setFromval(e.target.value) }}
+                                />
 
-                    </div>
-                    <br />
-                    <br />
-                    <div>
-                        <label htmlFor="currency">Select Currency:</label>
-                        <select
-                            value={to}
-                            onChange={(e) => { setTo(e.target.value) }}>
-                            {currencyCodes.map((code) => (
-                                <option key={code} value={code}>
-                                    {code}
-                                </option>
-                            ))}
-                        </select>
-                        <label>To</label>
-                        <input
-                            type="number"
-                            value={toVal}
-                            onChange={(e) => { setToval(e.target.value) }}
-                        />
+                            </div>
+                            <br />
+                            <br />
+                            <div>
+                                <label className='label-head'>To</label>
+                                <label htmlFor="currency">Select Currency:</label>
+                                <select
+                                    value={to}
+                                    onChange={(e) => { setTo(e.target.value) }}>
+                                    {currencyCodes.map((code) => (
+                                        <option key={code} value={code}>
+                                            {code}
+                                        </option>
+                                    ))}
+                                </select>
+                                
+                                <input
+                                    type="number"
+                                    value={toVal}
+                                    onChange={(e) => { setToval(e.target.value) }}
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
-            )
+            )}
 
-            }
         </div>
     )
 }

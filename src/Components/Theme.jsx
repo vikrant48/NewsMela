@@ -32,7 +32,7 @@ const ThemeToggle = () => {
     role="button" 
     aria-label="Toggle Theme"
   >
-    🌙/☀️
+    🌙
   </div>
   );
 };

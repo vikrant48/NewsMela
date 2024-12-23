@@ -5,6 +5,7 @@ import Newspaper from './NewsPaper';
 import Nav from './Nav';
 import Footer from './Footer'
 import CurrencyConvertor from './CurrencyConvertor';
+import Game from './Game';
 
 
 
@@ -13,14 +14,22 @@ const News = () => {
   const [search, setsearch] = useState("Search news");
 
   const NEWS_API_KEY1 = 'f36c2bdbc4114e48861a0c424f4a1363';
-  const NEWS_API_KEY2 = '80e6b3ba365b40e1a5934da3791a5215';
+  // const NEWS_API_KEY2 = '80e6b3ba365b40e1a5934da3791a5215';
 
-  const today = new Date().toISOString().split('T')[0];
+  const date = new Date()
+  const today = date.toISOString().split('T')[0]
   // console.log(today); // Output: 'YYYY-MM-DD'
+
+  const pastDate = new Date(date);
+  pastDate.setDate(date.getDate() - 25);
+
+  const fromdate = pastDate.toISOString().split('T')[0];
+
+
 
   const getData = async () => {
     try {
-      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=2024-11-15&to=${today}&sortBy=publishedAt&apiKey=${NEWS_API_KEY1}`)
+      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=${fromdate}&to=${today}&sortBy=publishedAt&apiKey=${NEWS_API_KEY1}`)
       const jsonData = await responce.json();
       // console.log(jsonData);
       setnewsData(jsonData.articles)
@@ -46,7 +55,19 @@ const News = () => {
     <>
       <Nav />
       <div>
+        <div className="news-weather-container">
+          <div className="newspaper-section">
+            <Newspaper />
+          </div>
+          <div className="currency-section">
+            <CurrencyConvertor />
+          </div>
+          <div className="weather-section">
+            <Weather />
+          </div>
+        </div>
         <div className="searchnews">
+
           <div className="searchbar">
             <input
               type="text"
@@ -71,20 +92,19 @@ const News = () => {
             <button onClick={userInput} value='AI'>AI</button>
           </div>
         </div>
-
-        <div className="news-weather-container">
-          <div className="newspaper-section">
-            <Newspaper />
-          </div>
-          <div className="currency-section">
-            <CurrencyConvertor/>
-          </div>
-          <div className="weather-section">
-            <Weather />
-          </div>
-        </div>
         <div>
-          {newsData ? <Card data={newsData} /> : null}
+          {newsData ? (
+            <Card data={newsData} />
+          ) : (
+            <>
+              <div className="news-api-error">
+                <h3>Oops! The news API is not working. Try playing a game.</h3>
+              </div>
+              <div className="game-container">
+                <Game />
+              </div>
+            </>
+          )}
         </div>
         <Footer />
       </div>

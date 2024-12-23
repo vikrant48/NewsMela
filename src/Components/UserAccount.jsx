@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import "../assets/UserAccount.css";
 
 const UserAccount = () => {
+  const [showUserAccount, setShowUserAccount] = useState(false);
   const [users, setUsers] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
+
+  const toggleUserAccount = () => {
+    setShowUserAccount(!showUserAccount);
+};
 
   // Handle Sign Up
   const handleSignUp = (e) => {
@@ -34,29 +39,36 @@ const UserAccount = () => {
   };
 
   return (
-    <div className="account-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSignUp}>
-        <input type="text" name="username" placeholder="Enter Username" required />
-        <input type="email" name="email" placeholder="Enter Email" required />
-        <input type="password" name="password" placeholder="Enter Password" required />
-        <button type="submit">Sign Up</button>
-      </form>
+    <div className="signin-cnt">
+      <button className="signin-btn" onClick={toggleUserAccount}>Sign In</button>
 
-      <h2>Log In</h2>
-      <form onSubmit={handleLogIn}>
-        <input type="email" name="email" placeholder="Enter Email" required />
-        <input type="password" name="password" placeholder="Enter Password" required />
-        <button type="submit">Log In</button>
-      </form>
+      {showUserAccount && (
+        <div className="modal">
+          <div className="modal-content">
+            <button className="close-btn" onClick={toggleUserAccount}>✖</button>
+            <h2 className="modal-heading" >Sign-in/Sign-up</h2>
+            <div className="account-container">
+              <h2>Sign Up</h2>
+              <form onSubmit={handleSignUp}>
+                <input type="text" name="username" placeholder="Enter Username" required />
+                <input type="email" name="email" placeholder="Enter Email" required />
+                <input type="password" name="password" placeholder="Enter Password" required />
+                <button type="submit">Sign Up</button>
+              </form>
 
-      {loggedInUser && (
-        <div className="welcome-message">
-          <h3>Welcome, {loggedInUser.username}!</h3>
-          <p>Your preferences: {JSON.stringify(loggedInUser.preferences)}</p>
+              <h2>Log In</h2>
+              <form onSubmit={handleLogIn}>
+                <input type="email" name="email" placeholder="Enter Email" required />
+                <input type="password" name="password" placeholder="Enter Password" required />
+                <button type="submit">Log In</button>
+              </form>
+            </div>
+
+          </div>
         </div>
       )}
     </div>
+
   );
 };
 

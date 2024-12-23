@@ -24,7 +24,7 @@ const Weather = () => {
       setError(error.message)
       setWeatherData(null)
       // console.error("Error fetching weather data:", error);
-      setIsWeatherCardVisible(false);
+      // setIsWeatherCardVisible(false);
 
       setTimeout(() => {
         setError(null)
@@ -51,47 +51,34 @@ const Weather = () => {
       {isWeatherCardVisible && (
         <div className="modal">
           <div className="modal-content">
-            <h2>Check Weather</h2>
-            <div className="input-group">
-              <input
-                type="text"
-                placeholder="Enter city name"
-                value={city}
-                onChange={handleCityChange}
-              />
-              <button onClick={getWeather}>Get Weather</button>
-              {error && <p style={{ color: 'red' }}>{error}</p>}
-            </div>
-
-            {weatherData && (
-              <div className="weather-card">
-                <h3>{weatherData.name}</h3>
-                <p>
-                  <strong>Temperature:</strong> {weatherData.main.temp} °C
-                </p>
-                <p>
-                  <strong>Weather:</strong> {weatherData.weather[0].description}
-                </p>
-                <p>
-                  <strong>Humidity:</strong> {weatherData.main.humidity}%
-                </p>
-                <p>
-                  <strong>Wind Speed:</strong> {weatherData.wind.speed} m/s
-                </p>
-                <p>
-                  <strong>Pressure:</strong> {weatherData.main.pressure} hPa
-                </p>
-                <p>
-                  <strong>Sunrise:</strong> {convertTime(weatherData.sys.sunrise)}
-                </p>
-                <p>
-                  <strong>Sunset:</strong> {convertTime(weatherData.sys.sunset)}
-                </p>
+            <button onClick={() => setIsWeatherCardVisible(false)} className="close-btn">✖</button>
+            <h2 className="modal-heading" >Check Weather</h2>
+            <div className="modal-page">
+              <div className="input-group">
+                <input
+                  type="text"
+                  placeholder="Enter city name"
+                  value={city}
+                  onChange={handleCityChange}
+                />
+                <button onClick={getWeather}>Get Weather</button>
               </div>
-            )}
-            <button onClick={() => setIsWeatherCardVisible(false)} className="close-btn">
-              ✖
-            </button>
+
+              {weatherData ? (
+                <div className="weather-card">
+                  <h3>{weatherData.name}</h3>
+                  <p><strong>Temperature:</strong> {weatherData.main.temp} °C</p>
+                  <p><strong>Weather:</strong> {weatherData.weather[0].description}</p>
+                  <p><strong>Humidity:</strong> {weatherData.main.humidity}%</p>
+                  <p><strong>Wind Speed:</strong> {weatherData.wind.speed} m/s</p>
+                  <p><strong>Pressure:</strong> {weatherData.main.pressure} hPa</p>
+                  <p><strong>Sunrise:</strong> {convertTime(weatherData.sys.sunrise)}</p>
+                  <p><strong>Sunset:</strong> {convertTime(weatherData.sys.sunset)}</p>
+                </div>
+              ):(
+                <p style={{ color: 'red' }}>{error}</p>
+              )}
+            </div>
           </div>
         </div>
       )}
