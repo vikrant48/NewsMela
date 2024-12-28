@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Card from './Card'
-import Weather from './Weather';
-import Newspaper from './NewsPaper';
-import Nav from './Nav';
-import Footer from './Footer'
-import CurrencyConvertor from './CurrencyConvertor';
 import Game from './Game';
-
-
+import '../assets/News.css'
 
 const News = () => {
   const [newsData, setnewsData] = useState(null);
   const [search, setsearch] = useState("Search news");
 
-  const NEWS_API_KEY1 = 'f36c2bdbc4114e48861a0c424f4a1363';
+  // const NEWS_API_KEY1 = 'f36c2bdbc4114e48861a0c424f4a1363';
   // const NEWS_API_KEY2 = '80e6b3ba365b40e1a5934da3791a5215';
 
   const date = new Date()
@@ -24,8 +18,6 @@ const News = () => {
   pastDate.setDate(date.getDate() - 25);
 
   const fromdate = pastDate.toISOString().split('T')[0];
-
-
 
   const getData = async () => {
     try {
@@ -52,22 +44,8 @@ const News = () => {
   }
 
   return (
-    <>
-      <Nav />
       <div>
-        <div className="news-weather-container">
-          <div className="newspaper-section">
-            <Newspaper />
-          </div>
-          <div className="currency-section">
-            <CurrencyConvertor />
-          </div>
-          <div className="weather-section">
-            <Weather />
-          </div>
-        </div>
         <div className="searchnews">
-
           <div className="searchbar">
             <input
               type="text"
@@ -106,9 +84,7 @@ const News = () => {
             </>
           )}
         </div>
-        <Footer />
       </div>
-    </>
   )
 }
 
