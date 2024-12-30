@@ -7,8 +7,7 @@ const News = () => {
   const [newsData, setnewsData] = useState(null);
   const [search, setsearch] = useState("Search news");
 
-  const NEWS_API_KEY1 = 'f36c2bdbc4114e48861a0c424f4a1363';
-  // const NEWS_API_KEY2 = '80e6b3ba365b40e1a5934da3791a5215';
+  const NEWS_API_KEY1 = import.meta.env.VITE_NEWS_API_KEY;
 
   const date = new Date()
   const today = date.toISOString().split('T')[0]
@@ -76,7 +75,7 @@ const News = () => {
           ) : (
             <>
               <div className="news-api-error">
-                <h3>Oops! The news API is not working. Try playing a game.</h3>
+                <h3>Oops! The news API is not working. Try playing a game !! </h3>
               </div>
               <div className="game-container">
                 <Game />
