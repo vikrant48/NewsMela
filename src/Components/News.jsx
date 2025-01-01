@@ -7,7 +7,7 @@ const News = () => {
   const [newsData, setnewsData] = useState(null);
   const [search, setsearch] = useState("Search news");
 
-  const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+  const NEWS_API_KEY = 'f36c2bdbc4114e48861a0c424f4a1363'
 
   const date = new Date()
   const today = date.toISOString().split('T')[0]
