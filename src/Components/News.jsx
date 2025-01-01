@@ -7,7 +7,7 @@ const News = () => {
   const [newsData, setnewsData] = useState(null);
   const [search, setsearch] = useState("Search news");
 
-  const NEWS_API_KEY1 = import.meta.env.VITE_NEWS_API_KEY;
+  const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
   const date = new Date()
   const today = date.toISOString().split('T')[0]
@@ -20,7 +20,7 @@ const News = () => {
 
   const getData = async () => {
     try {
-      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=${fromdate}&to=${today}&sortBy=publishedAt&apiKey=${NEWS_API_KEY1}`)
+      const responce = await fetch(`https://newsapi.org/v2/everything?q=${search}&from=${fromdate}&to=${today}&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`)
       const jsonData = await responce.json();
       // console.log(jsonData);
       setnewsData(jsonData.articles)

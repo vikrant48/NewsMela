@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 function useCurrencyInfo(from) {
     const  [data, setData] = useState({})
-    const API_KEY = "d47c5ba9242f01fe4538270c0a9acb21"
+
+    const API_KEY = import.meta.env.VITE_CURRENCY_API_KEY;
 
     useEffect(()=>{
         fetch(`https://apilayer.net/api/live?access_key=${API_KEY}&source=${from}`)
