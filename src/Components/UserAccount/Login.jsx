@@ -10,7 +10,7 @@ const Login = ({ togglePage }) => {
   });
 
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false); // New state to track if the form is submitted
+  const [submitted, setSubmitted] = useState(false); 
 
   const validate = (values) => {
     const errors = {};
