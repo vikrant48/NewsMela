@@ -1,28 +1,20 @@
-import CurrencyConvertor from './Components/CurrencyConvertor'
+import { useState } from 'react'
 import Footer from './Components/Footer'
 import Nav from './Components/Nav'
 import News from './Components/News'
-import Newspaper from './Components/NewsPaper'
-import Weather from './Components/Weather'
 
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState('general')
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category)
+  }
 
   return (
     <>
-      <Nav/>
-      <div className="news-weather-container">
-          <div className="newspaper-section">
-            <Newspaper />
-          </div>
-          <div className="currency-section">
-            <CurrencyConvertor />
-          </div>
-          <div className="weather-section">
-            <Weather />
-          </div>
-        </div>
-      <News/>
+      <Nav onCategorySelect={handleCategorySelect}/>
+      <News category={selectedCategory}/>
       <Footer/>
     </>
   )

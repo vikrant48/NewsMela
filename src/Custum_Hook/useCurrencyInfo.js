@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function useCurrencyInfo(from) {
     const  [data, setData] = useState({})
 
-    const API_KEY = import.meta.env.VITE_CURRENCY_API_KEY
-
     useEffect(()=>{
-        fetch(`https://apilayer.net/api/live?access_key=${API_KEY}&source=${from}`)
+        fetch(`https://apilayer.net/api/live?access_key=${import.meta.env.VITE_CURRENCY_API_KEY}&source=${from}`)
         .then((resp)=> resp.json())
         .then((resp)=> setData(resp.quotes))
         // .then((resp)=>{

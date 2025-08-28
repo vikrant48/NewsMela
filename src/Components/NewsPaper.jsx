@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import '../assets/Newspaper.css'
+import { useState } from 'react';
 
 const newspapers = [
   { name: 'The Times of India', url: 'https://timesofindia.indiatimes.com/' },
@@ -25,9 +24,14 @@ const Newspaper = () => {
     };
   
     return (
-      <div>
+      <div className="relative">
         {/* <h2>Select a Newspaper</h2> */}
-        <select className='newspaper' onChange={handleSelection} value={selectedNewspaper}>
+        <select 
+          onChange={handleSelection} 
+          value={selectedNewspaper}
+          className="w-full px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        >
+
           <option value="">-- Select Newspaper --</option>
           {newspapers.map((paper, index) => (
             <option key={index} value={paper.url}>

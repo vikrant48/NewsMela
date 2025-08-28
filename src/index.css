@@ -1,138 +1,167 @@
-body {
-  background-color: #ffffff;
-  color: #333;
-  font-family: "Arial", sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-h1,
-h3 {
-  margin: 0;
-  padding: 0;
-}
-
-/* Common Modal Styles */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: rgb(38, 37, 38);
-  width: 60%;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  position: relative;
-  text-align: center;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #f53838;
-  transition: color 0.3s ease;
-}
-
-.close-btn:hover {
-  color: #ff5733;
-}
-
-.modal-heading {
-  font-size: 24px;
-  font-weight: bold;
-  color: #f5f5f5;
-  margin-bottom: 20px;
-}
-
-.news-weather-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 150px;
-  /* border: 1px solid #ddd;  */
-  border-radius: 5px;
-}
-
-.newspaper-section {
-  flex: 1;
-  text-align: left;
-}
-
-.currency-section {
-  flex: 1;
-  text-align: center;
-}
-
-.weather-section {
-  flex: 1;
-  text-align: right;
-}
-
-.news-api-error {
-  margin: 15px 0;
-  text-align: center;
-  font-size: 35px;
-  color: #f39c12;
-}
-
-
-@media (max-width: 768px) {
-
-  .modal-content {
-    width: 80%;
+/* Custom base styles */
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
   }
-
-  .news-weather-container {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 4px 40px;
-  }
-
-  .newspaper-section,
-  .weather-section,
-  .currency-section {
-    text-align: center;
-    margin-bottom: 5px;
-  }
-
-  .news-api-error {
-    margin: 10px 25px;
-    text-align: center;
-    font-size: 15px;
-    color: #f39c12;
-  }
-}
-
-
-@media (max-width: 480px) {
+  
   body {
-    font-size: 14px;
+    @apply bg-gray-50 text-gray-900 transition-colors duration-300;
   }
-
-  .modal-content {
-    width: 90%;
+  
+  body.dark {
+    @apply bg-gray-900 text-gray-100;
   }
+}
 
-  .modal-heading {
-    font-size: 20px;
+/* Custom component styles */
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .card.dark {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+  }
+  
+  .input-field.dark {
+    @apply bg-gray-700 border-gray-600 text-white;
+  }
+}
 
-  .card-container {
-    grid-template-columns: 1fr;
-    padding: 10px;
+/* Custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Enhanced Focus Indicators for Accessibility */
+@layer components {
+  /* Global focus styles */
+  *:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* Enhanced focus for interactive elements */
+  .focus-enhanced:focus {
+    @apply ring-2 ring-blue-500 ring-offset-2 outline-none;
+    transition: box-shadow 0.15s ease-in-out;
+  }
+  
+  /* Dark mode focus adjustments */
+  .dark .focus-enhanced:focus {
+    @apply ring-blue-400 ring-offset-gray-800;
+  }
+  
+  /* Card focus styles */
+  .card-focusable:focus {
+    @apply ring-2 ring-blue-500 ring-offset-2 outline-none transform scale-[1.02];
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .dark .card-focusable:focus {
+    @apply ring-blue-400 ring-offset-gray-900;
+  }
+  
+  /* Button focus styles */
+  .btn-focus:focus {
+    @apply ring-2 ring-offset-2 outline-none;
+    transition: all 0.15s ease-in-out;
+  }
+  
+  /* Skip link for keyboard navigation */
+  .skip-link {
+    @apply absolute -top-10 left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 transition-all duration-200;
+  }
+  
+  .skip-link:focus {
+    @apply top-4;
+  }
+  
+  /* High contrast focus for better visibility */
+  @media (prefers-contrast: high) {
+    *:focus {
+      outline: 3px solid #000;
+      outline-offset: 2px;
+    }
+    
+    .dark *:focus {
+      outline-color: #fff;
+    }
+  }
+}
+
+/* Mobile touch target optimization - minimum 44px */
+@media (max-width: 768px) {
+  /* Ensure all buttons meet minimum touch target size */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Specific touch target optimizations */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+  }
+  
+  /* Navigation buttons */
+  nav button {
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+  
+  /* Card action buttons */
+  .card-actions button {
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+  
+  /* Social share buttons */
+  .social-share button {
+    min-height: 44px;
+    padding: 12px;
+  }
+  
+  /* Bookmark button */
+  .bookmark-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+  }
+  
+  /* Links in navigation */
+  nav a {
+    min-height: 44px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
   }
 }

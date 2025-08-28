@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import usecurrencyInfo from '../Custum_Hook/useCurrencyInfo'
-import '../assets/currency_cnvrt.css'
 
 function CurrencyConvertor() {
     const [from, setfrom] = useState('USD')
@@ -42,59 +41,71 @@ function CurrencyConvertor() {
             }
         };
         convert();
-    }, [fromVal, from, to, currencyInfo]);
+    }, [fromVal, from, to, currencyInfo, key]);
     return (
-        <div className="currency-container">
-            <button onClick={() => setiscurrcardvisible(true)} className="check-currency-btn">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 max-w-md mx-auto">
+            <button onClick={() => setiscurrcardvisible(true)} className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                 Currency Convertor
             </button>
             {iscurrcardvisible && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <button className="close-btn" onClick={() => setiscurrcardvisible(false)}>✖</button>
-                        <h2 className="modal-heading" >currency convertor</h2>
-                        <div className="currency-card">
-                            <div>
-                                <label className='label-head'>From</label>
-                                <label htmlFor="currency">Select Currency:</label>
-                                <select
-                                    value={from}
-                                    onChange={(e) => { setfrom(e.target.value) }}>
-                                    {currencyCodes.map((code) => (
-                                        <option key={code} value={code}>
-                                            {code}
-                                        </option>
-                                    ))}
-                                </select>
-                                
-                                <input
-                                    type="number"
-                                    value={fromVal}
-                                    onChange={(e) => { setFromval(e.target.value) }}
-                                />
-
-                            </div>
-                            <br />
-                            <br />
-                            <div>
-                                <label className='label-head'>To</label>
-                                <label htmlFor="currency">Select Currency:</label>
-                                <select
-                                    value={to}
-                                    onChange={(e) => { setTo(e.target.value) }}>
-                                    {currencyCodes.map((code) => (
-                                        <option key={code} value={code}>
-                                            {code}
-                                        </option>
-                                    ))}
-                                </select>
-                                
-                                <input
-                                    type="number"
-                                    value={toVal}
-                                    onChange={(e) => { setToval(e.target.value) }}
-                                />
-                            </div>
+                <div className="mt-6 space-y-6 relative">
+                    <button
+                        className="absolute top-0 right-0 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl font-bold z-10"
+                        onClick={() => setiscurrcardvisible(false)}
+                    >
+                        &times;
+                    </button>
+                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white text-center">Currency Convertor</h1>
+                    <div className="space-y-4">
+                        <div className="space-y-2">
+                            <label htmlFor="from-currency" className="block text-sm font-medium text-gray-700 dark:text-gray-300">From Currency:</label>
+                            <select
+                                id="from-currency"
+                                value={from}
+                                onChange={(e) => { setfrom(e.target.value) }}
+                                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200">
+                                {currencyCodes.map((code) => (
+                                    <option key={code} value={code}>
+                                        {code}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="space-y-2">
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Amount</label>
+                            <input
+                                type="number"
+                                value={fromVal}
+                                onChange={(e) => { setFromval(e.target.value) }}
+                                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200"
+                                placeholder="Enter amount"
+                            />
+                        </div>
+                    </div>
+                    <div className="space-y-4">
+                        <div className="space-y-2">
+                            <label htmlFor="to-currency" className="block text-sm font-medium text-gray-700 dark:text-gray-300">To Currency:</label>
+                            <select
+                                id="to-currency"
+                                value={to}
+                                onChange={(e) => { setTo(e.target.value) }}
+                                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200">
+                                {currencyCodes.map((code) => (
+                                    <option key={code} value={code}>
+                                        {code}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Converted Amount</label>
+                            <input
+                                type="number"
+                                value={toVal}
+                                onChange={(e) => { setToval(e.target.value) }}
+                                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-200"
+                                readOnly
+                            />
                         </div>
                     </div>
                 </div>
